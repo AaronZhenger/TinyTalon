@@ -5,7 +5,9 @@
 package team5427.frc.robot;
 
 import com.ctre.phoenix6.CANBus;
+
 import edu.wpi.first.math.util.Units;
+import team5427.lib.drivers.CANDeviceId;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -41,5 +43,10 @@ public final class Constants {
     public static final int kDriverJoystickPort = 0;
     public static final int kOperatorJoystickPort = 1;
     public static final double kDriverControllerJoystickDeadzone = 0.0;
+  }
+
+  public static class IntakeConstants {
+    public static final CANDeviceId kPivotID = new CANDeviceId(5);
+    public static final CANDeviceId kFlywheelID = new CANDeviceId(6);
   }
 }

@@ -1,6 +1,6 @@
 plugins {
     id "java"
-    id "edu.wpi.first.GradleRIO" version "2025.3.1"
+    id "edu.wpi.first.GradleRIO" version "2025.3.2"
     id "com.peterabeles.gversion" version "1.10"
     id 'com.diffplug.spotless' version '6.25.0'
     id "io.freefair.lombok" version "6.6.1"
@@ -136,6 +136,9 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     implementation 'org.team4206:battleaid:0.4.0'
+
+    def akitJson = new groovy.json.JsonSlurper().parseText(new File(projectDir.getAbsolutePath() + "/vendordeps/AdvantageKit.json").text)
+    annotationProcessor "org.littletonrobotics.akit:akit-autolog:$akitJson.version"
 }
 
 test {
@@ -215,4 +218,9 @@ spotless {
         indentWithSpaces(4)
         endWithNewline()
     }
+}
+
+task(replayWatch, type: JavaExec) {
+    mainClass = "org.littletonrobotics.junction.ReplayWatch"
+    classpath = sourceSets.main.runtimeClasspath
 }

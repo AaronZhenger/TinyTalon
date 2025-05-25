@@ -56,5 +56,12 @@
     "edu.wpi.first.math.proto.*",
     "edu.wpi.first.math.**.proto.*",
     "edu.wpi.first.math.**.struct.*",
-  ]
+  ],
+  "java.codeAnalysis.excludeRules": [
+    "naming.constantName"
+  ],
+  "java.errors.incompleteClasspath.severity": "ignore",
+  "java.format.settings.url": "",
+  "java.format.settings.profile": "Default",
+  "java.semanticHighlighting.enabled": false
 }

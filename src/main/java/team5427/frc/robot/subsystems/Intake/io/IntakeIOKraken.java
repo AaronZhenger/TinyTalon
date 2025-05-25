@@ -43,6 +43,7 @@ public class IntakeIOKraken implements IntakeIO {
         pivotConfig.kV = IntakeConstants.kPivotV;
         pivotConfig.kA = IntakeConstants.kPivotA;
         pivotConfig.isArm = true;
+        pivotConfig.withFOC = true;
         pivotConfig.maxVelocity = 5;
         pivotConfig.maxAcceleration = 5;
 
@@ -58,6 +59,7 @@ public class IntakeIOKraken implements IntakeIO {
         flywheelConfig.kV = IntakeConstants.kIntakeV;
         flywheelConfig.kA = IntakeConstants.kIntakeA;
         flywheelConfig.isArm = false;
+        flywheelConfig.withFOC = true;
         flywheelConfig.maxVelocity = 5;
         flywheelConfig.maxAcceleration = 5;
 

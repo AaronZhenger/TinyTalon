@@ -52,6 +52,7 @@ public final class Constants {
 
     //Pivot
     public static final ComplexGearRatio kPivotGearRatio = new ComplexGearRatio(1.0/8.0);
+    public static final double kPivotMaxRPM = 5800.0;
     public static final double kPivotP = 0.0;
     public static final double kPivotI = 0.0;
     public static final double kPivotD = 0.0;
@@ -62,6 +63,7 @@ public final class Constants {
 
     //Intake
     public static final ComplexGearRatio kIntakeGearRatio = new ComplexGearRatio(1.0/8.0);
+    public static final double kIntakeMaxRPM = 5800.0;
     public static final double kIntakeP = 0.0;
     public static final double kIntakeI = 0.0;
     public static final double kIntakeD = 0.0;

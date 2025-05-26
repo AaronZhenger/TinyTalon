@@ -5,7 +5,6 @@
 package team5427.frc.robot;
 
 import com.ctre.phoenix6.CANBus;
-
 import edu.wpi.first.math.util.Units;
 
 /**

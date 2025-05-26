@@ -16,8 +16,8 @@ public class IntakeSubsystem extends SubsystemBase {
     private IntakeIO intake;
     private IntakeIOInputsAutoLogged inputs;
 
-    private Angle targetAngle = Angle.ofBaseUnits(0, Degrees);
-    private AngularVelocity targetSpeeds = AngularVelocity.ofBaseUnits(0, RPM);
+    private Angle targetAngle = Degrees.of(0);
+    private AngularVelocity targetSpeeds = RPM.of(0);
 
     public IntakeSubsystem() {
         intake = new IntakeIOKraken();
@@ -28,6 +28,30 @@ public class IntakeSubsystem extends SubsystemBase {
         intake.updateInputs(inputs);
         intake.setPosition(targetAngle);
         intake.setSpeeds(targetSpeeds);
+        log();
+    }
+
+    public void intake() {
+        targetSpeeds = RPM.of(500);
+    }
+
+    public void stop() {
+        targetSpeeds = RPM.of(0);
+    }
+
+    public void retract() {
+        targetAngle = Degrees.of(0);
+    }
+
+    public void extrude() {
+        targetAngle = Degrees.of(90);
+    }
+
+    public boolean pivotAtTarget() {
+        return Math.abs(targetAngle.in(Degrees)-inputs.pivotPosition.in(Degrees))<=3;
+    }
+
+    private void log() {
         Logger.recordOutput("Pivot Setpoint", targetAngle);
         Logger.recordOutput("Flywheel Setpoint", targetAngle);
 
@@ -37,29 +61,9 @@ public class IntakeSubsystem extends SubsystemBase {
         Logger.recordOutput("Pivot Current", inputs.pivotCurrent);
         Logger.recordOutput("Pivot Voltage", inputs.pivotVoltage);
 
-        Logger.recordOutput("Flywheel Velocity", inputs.pivotVelocity);
-        Logger.recordOutput("Flywheel Acceleration", inputs.pivotAcceleration);
-        Logger.recordOutput("Flywheel Current", inputs.pivotCurrent);
-        Logger.recordOutput("Flywheel Voltage", inputs.pivotVoltage);
-    }
-
-    public void intake() {
-        targetSpeeds = AngularVelocity.ofBaseUnits(500, RPM);
-    }
-
-    public void stop() {
-        targetSpeeds = AngularVelocity.ofBaseUnits(0, RPM);
-    }
-
-    public void retract() {
-        targetAngle = Angle.ofBaseUnits(0, Degrees);
-    }
-
-    public void extrude() {
-        targetAngle = Angle.ofBaseUnits(90, Degrees);
-    }
-
-    public boolean pivotAtTarget() {
-        return Math.abs(targetAngle.in(Degrees)-inputs.pivotPosition.in(Degrees))<=3;
+        Logger.recordOutput("Flywheel Velocity", inputs.flywheelVelocity);
+        Logger.recordOutput("Flywheel Acceleration", inputs.flywheelAcceleration);
+        Logger.recordOutput("Flywheel Current", inputs.flywheelCurrent);
+        Logger.recordOutput("Flywheel Voltage", inputs.flywheelVoltage);
     }
 }

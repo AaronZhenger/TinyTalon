@@ -7,6 +7,7 @@ import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.AngularAcceleration;
 import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.units.measure.Current;
+import edu.wpi.first.units.measure.LinearVelocity;
 import edu.wpi.first.units.measure.Temperature;
 import edu.wpi.first.units.measure.Voltage;
 import team5427.frc.robot.subsystems.Intake.IntakeConstants;
@@ -117,7 +118,7 @@ public class IntakeIOKraken implements IntakeIO {
   }
 
   @Override
-  public void setSpeeds(AngularVelocity velocity) {
+  public void setSpeeds(LinearVelocity velocity) {
     flywheel.setSetpoint(velocity);
   }
 

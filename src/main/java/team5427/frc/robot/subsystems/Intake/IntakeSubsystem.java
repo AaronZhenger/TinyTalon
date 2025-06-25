@@ -1,10 +1,10 @@
 package team5427.frc.robot.subsystems.Intake;
 
 import static edu.wpi.first.units.Units.Degrees;
-import static edu.wpi.first.units.Units.RPM;
+import static edu.wpi.first.units.Units.MetersPerSecond;
 
 import edu.wpi.first.units.measure.Angle;
-import edu.wpi.first.units.measure.AngularVelocity;
+import edu.wpi.first.units.measure.LinearVelocity;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import org.littletonrobotics.junction.Logger;
 import team5427.frc.robot.subsystems.Intake.io.IntakeIO;
@@ -16,7 +16,7 @@ public class IntakeSubsystem extends SubsystemBase {
   private IntakeIOInputsAutoLogged inputs;
 
   private Angle targetAngle = Degrees.of(0);
-  private AngularVelocity targetSpeeds = RPM.of(0);
+  private LinearVelocity targetSpeeds = MetersPerSecond.of(0);
 
   public IntakeSubsystem() {
     intake = new IntakeIOKraken();
@@ -34,7 +34,7 @@ public class IntakeSubsystem extends SubsystemBase {
     this.targetAngle = targetAngle;
   }
 
-  public void setTargetSpeeds(AngularVelocity targetSpeeds) {
+  public void setTargetSpeeds(LinearVelocity targetSpeeds) {
     this.targetSpeeds = targetSpeeds;
   }
 

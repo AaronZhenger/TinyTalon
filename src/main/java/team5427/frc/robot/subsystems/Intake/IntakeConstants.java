@@ -19,6 +19,7 @@ public class IntakeConstants {
   public static final ComplexGearRatio kFlywheelGearRatio = new ComplexGearRatio((18.0 / 36.0));
   public static final double kFlywheelMaxRPM = 7530.0;
   public static final int kFlywheelMaxCurrent = 40;
+  
 
   // Configs
   public static final MotorConfiguration kPivotConfiguration = new MotorConfiguration();
@@ -48,15 +49,10 @@ public class IntakeConstants {
     kFlywheelConfiguration.idleState = MotorConfiguration.IdleState.kCoast;
     kFlywheelConfiguration.gearRatio = kFlywheelGearRatio;
     kFlywheelConfiguration.kP = 0.0;
-    ;
     kFlywheelConfiguration.kI = 0.0;
-    ;
     kFlywheelConfiguration.kD = 0.0;
-    ;
     kFlywheelConfiguration.kV = 1.20;
-    ;
     kFlywheelConfiguration.kA = 0.02;
-    ;
     kFlywheelConfiguration.isArm = false;
     kFlywheelConfiguration.withFOC = false;
     kFlywheelConfiguration.isInverted = false;

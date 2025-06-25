@@ -11,6 +11,7 @@ import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.AngularAcceleration;
 import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.units.measure.Current;
+import edu.wpi.first.units.measure.LinearVelocity;
 import edu.wpi.first.units.measure.Temperature;
 import edu.wpi.first.units.measure.Voltage;
 import org.littletonrobotics.junction.AutoLog;
@@ -34,7 +35,7 @@ public interface IntakeIO {
 
   public void updateInputs(IntakeIOInputsAutoLogged inputs);
 
-  public void setSpeeds(AngularVelocity velocity);
+  public void setSpeeds(LinearVelocity velocity);
 
   public void setPosition(Angle angle);
 }

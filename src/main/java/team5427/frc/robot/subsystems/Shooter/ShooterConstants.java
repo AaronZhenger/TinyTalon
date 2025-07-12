@@ -36,7 +36,7 @@ public class ShooterConstants {
         kTurretPivotConfiguration.currentLimit = 40;
         kTurretPivotConfiguration.finalDiameterMeters = 0.2;
         kTurretPivotConfiguration.gearRatio = new ComplexGearRatio((1/4));
-        kTurretPivotConfiguration.idleState = IdleState.kCoast;
+        kTurretPivotConfiguration.idleState = IdleState.kBrake;
         kTurretPivotConfiguration.kP = 0.0;
         kTurretPivotConfiguration.kI = 0.0;
         kTurretPivotConfiguration.kD = 0.0;

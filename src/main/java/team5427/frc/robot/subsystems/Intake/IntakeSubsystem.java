@@ -13,7 +13,7 @@ import team5427.frc.robot.subsystems.Intake.io.IntakeIOKraken;
 
 public class IntakeSubsystem extends SubsystemBase {
   private IntakeIO intake;
-  private IntakeIOInputsAutoLogged inputs;
+  private IntakeIOInputsAutoLogged inputsAutoLogged;
 
   private Angle targetAngle = Degrees.of(0);
   private LinearVelocity targetSpeeds = MetersPerSecond.of(0);
@@ -24,10 +24,10 @@ public class IntakeSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    intake.updateInputs(inputs);
+    intake.updateInputs(inputsAutoLogged);
     intake.setPosition(targetAngle);
     intake.setSpeeds(targetSpeeds);
-    log();
+    Logger.processInputs("IntakeInputsAutologged", inputsAutoLogged);
   }
 
   public void setTargetAngle(Angle targetAngle) {
@@ -39,24 +39,6 @@ public class IntakeSubsystem extends SubsystemBase {
   }
 
   public boolean pivotAtTarget() {
-    return Math.abs(targetAngle.in(Degrees) - inputs.pivotPosition.in(Degrees)) <= 3;
-  }
-
-  private void log() {
-    Logger.recordOutput("Pivot Setpoint", targetAngle);
-    Logger.recordOutput("Flywheel Setpoint", targetAngle);
-
-    Logger.recordOutput("Pivot Velocity", inputs.pivotVelocity);
-    Logger.recordOutput("Pivot Acceleration", inputs.pivotAcceleration);
-    Logger.recordOutput("Pivot Position", inputs.pivotPosition);
-    Logger.recordOutput("Pivot Current", inputs.pivotCurrent);
-    Logger.recordOutput("Pivot Voltage", inputs.pivotVoltage);
-    Logger.recordOutput("Pivot Temperature", inputs.pivotTemperature);
-
-    Logger.recordOutput("Flywheel Velocity", inputs.flywheelVelocity);
-    Logger.recordOutput("Flywheel Acceleration", inputs.flywheelAcceleration);
-    Logger.recordOutput("Flywheel Current", inputs.flywheelCurrent);
-    Logger.recordOutput("Flywheel Voltage", inputs.flywheelVoltage);
-    Logger.recordOutput("Flywheel Temperature", inputs.flywheelTemperature);
+    return Math.abs(targetAngle.in(Degrees) - inputsAutoLogged.pivotPosition.in(Degrees)) <= 3;
   }
 }
